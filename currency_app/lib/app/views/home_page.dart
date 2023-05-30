@@ -18,28 +18,49 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                         flex: 1,
-                        child: DropdownButton(items: const [
-                          DropdownMenuItem(child: Text('Real')),
-                          
-                          DropdownMenuItem(child: Text('Dólar'))
-                        ], onChanged: (value) {})),
+                        child: SizedBox(
+                          height: 56,
+                          child: DropdownButton(
+                              isExpanded: true,
+                              underline: Container(
+                                height: 1,
+                                color: Colors.amber,
+                              ),
+                              items: [
+                                DropdownMenuItem(
+                                  child: Text('Real'),
+                                ),
+                                //       DropdownMenuItem(
+                                //       child: Text('Dólar'),
+                                //         ),
+                              ],
+                              onChanged: (value) {}),
+                        )),
                     const SizedBox(
                       width: 10,
                     ),
                     const Expanded(
                       flex: 2,
                       child: TextField(
-                        decoration: InputDecoration(),
+                        decoration: InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.amber)),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.amber)
+                            )
+                                ),
                       ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 50),
-              ElevatedButton(onPressed: () => {}, child: Text('Converter'))
+              ElevatedButton(
+                onPressed: () => {}, child: Text('Converter'),)
             ],
           ),
         ),
